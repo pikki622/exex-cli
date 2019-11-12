@@ -5,5 +5,5 @@ __pycache__/
 *.egg-info/
 *.py[cod]
 *$py.class
-poetry.lock
 .python-version
+poetry.lock
