@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "foo"
+name = "exex-cli"
 version = "0.1.0"
 description = ""
 authors = ["Viktor Persson <viktor.persson@arcsin.se>"]
