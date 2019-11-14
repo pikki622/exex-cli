@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "exex-cli"
 version = "0.1.0"
-description = "Command-line interface for exex."
+description = "Command-line interface for extracting data from Excel documents."
 authors = ["Viktor Persson <viktor.persson@arcsin.se>"]
 
 [tool.poetry.dependencies]
