@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "exex-cli"
 version = "0.1.0"
-description = ""
+description = "Command-line interface for exex."
 authors = ["Viktor Persson <viktor.persson@arcsin.se>"]
 
 [tool.poetry.dependencies]
