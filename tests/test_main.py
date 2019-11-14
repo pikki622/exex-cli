@@ -1,5 +1,5 @@
-from exex_cli import app
+from exex_cli import main
 
 
-def test_hello():
+def test_main():
     assert "foo" == "bar"
