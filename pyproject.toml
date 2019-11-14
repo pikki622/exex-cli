@@ -3,6 +3,23 @@ name = "exex-cli"
 version = "0.1.0"
 description = "Command-line interface for extracting data from Excel documents."
 authors = ["Viktor Persson <viktor.persson@arcsin.se>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/vikpe/exex-cli"
+repository = "https://github.com/vikpe/exex-cli"
+keywords = ["cli", "excel", "extract", "parser", "tool"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Topic :: Office/Business :: Financial :: Spreadsheet",
+    "Topic :: Utilities",
+    "Operating System :: POSIX",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
