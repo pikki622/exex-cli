@@ -59,7 +59,7 @@ class ExtractCommand(cleo.Command):
         elif format_ == formats.CSV:
             return convert.to_csv(values, delimiter=self.option("delimiter"))
         elif format_ == formats.TABLE:
-            return values
+            return convert.to_strings(values)
         elif format_ == formats.JSON:
             return convert.to_json(values)
         else:
