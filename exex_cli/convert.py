@@ -3,15 +3,22 @@ from exex_cli.util import array_dimensions
 import json
 
 
+def to_string(value):
+    if value:
+        return str(value)
+    else:
+        return ""
+
+
 def to_strings(values):
     outer_dim, inner_dim = array_dimensions(values)
 
     if outer_dim == 0 and inner_dim == 0:
-        return str(values)
+        return to_string(values)
     elif inner_dim == 0:
-        return list(map(str, values))
+        return list(map(to_string, values))
     else:
-        return [list(map(str, row)) for row in values]
+        return [list(map(to_string, row)) for row in values]
 
 
 def to_csv(values, delimiter=",", line_separator="\n"):
