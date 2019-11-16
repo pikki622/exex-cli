@@ -1,9 +1,9 @@
-import json
-
 import cleo
+
 from exex import parse
 from openpyxl import load_workbook
 
+from exex_cli import convert
 from exex_cli import formats
 
 
@@ -44,23 +44,29 @@ class ExtractCommand(cleo.Command):
 
         # format
         arg_format = self.option("format")
+        values_formatted = self.__format(values_parsed, arg_format)
 
+        # render
         self.info("\n")
-        self.__render(values_parsed, arg_format)
+        self.__render(values_formatted, arg_format)
         self.info("\n")
 
         return
 
-    def __render(self, values, format_=formats.TEXT):
+    def __format(self, values, format_):
         if format_ == formats.TEXT:
-            self.info(values)
+            return values
         elif format_ == formats.CSV:
-            delimiter = self.option("delimiter")
-            values_as_csv = "\n".join([delimiter.join(r) for r in values])
-            self.info(values_as_csv)
+            return convert.to_csv(values, delimiter=self.option("delimiter"))
         elif format_ == formats.TABLE:
-            self.render_table(headers=values[0], rows=values[1:])
+            return values
         elif format_ == formats.JSON:
-            self.info(json.dumps(values, indent=2))
+            return convert.to_json(values)
         else:
-            self.info(values)
+            return values
+
+    def __render(self, values_formatted, format_):
+        if format_ == formats.TABLE:
+            self.render_table(headers=values_formatted[0], rows=values_formatted[1:])
+        else:
+            self.info(values_formatted)
