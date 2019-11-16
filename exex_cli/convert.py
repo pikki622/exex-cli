@@ -1,6 +1,8 @@
-from exex_cli.util import array_dimensions
-
+import csv
 import json
+from io import StringIO
+
+from exex_cli.util import array_dimensions
 
 
 def to_string(value):
@@ -21,20 +23,28 @@ def to_strings(values):
         return [list(map(to_string, row)) for row in values]
 
 
-def to_csv(values, delimiter=",", line_separator="\n"):
+def to_csv(values, delimiter=","):
+    newline = "\n"
+
     if not values:
-        return ""
-    elif not isinstance(values, list):
-        return to_strings(values)
+        return newline
 
     outer_dim, inner_dim = array_dimensions(values)
 
     if outer_dim == 0 and inner_dim == 0:
-        return values
+        rows = [[values]]
     elif inner_dim == 0:
-        return line_separator.join(to_strings(values))
+        rows = [values]
     else:
-        return line_separator.join(delimiter.join(to_strings(row)) for row in values)
+        rows = values
+
+    fileobj = StringIO()
+    csv_writer = csv.writer(fileobj, delimiter=delimiter, lineterminator=newline)
+    csv_writer.writerows(rows)
+    csv_string = fileobj.getvalue()
+    fileobj.close()
+
+    return csv_string
 
 
 def to_json(values):
