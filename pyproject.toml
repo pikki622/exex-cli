@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "exex-cli"
-version = "0.1.0"
+version = "0.1.2"
 description = "Command-line interface for extracting data from Excel documents."
-authors = ["Viktor Persson <viktor.persson@arcsin.se>"]
+authors = ["Viktor Persson"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/vikpe/exex-cli"
