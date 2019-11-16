@@ -1,5 +1,5 @@
-from exex_cli.application import application
-from exex_cli.commands import ExtractCommand
+from .application import application
+from .commands import ExtractCommand
 
 if __name__ == "__main__":
     application.add(ExtractCommand())
