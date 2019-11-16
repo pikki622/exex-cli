@@ -26,6 +26,7 @@ Parameter | Type | Default | Description
 
 Type | Syntax | Example
 --- | --- | ---
+All values | `all` | `all`
 Cell by name | `[COLUMN_NAME][ROW_NUMBER]` | `A1`
 Cell by index | `[COLUMN_INDEX],[ROW_INDEX]` | `1,1`
 Cell range | `[FROM]:[TO]` |  `A1:A3`
