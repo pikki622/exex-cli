@@ -1,11 +1,11 @@
 def array_dimensions(arr):
-    x = 0
-    y = 0
+    outer_dim = 0
+    inner_dim = 0
 
     if isinstance(arr, list):
-        x = len(arr)
+        outer_dim = len(arr)
 
         if arr and isinstance(arr[0], list):
-            y = len(arr[0])
+            inner_dim = len(arr[0])
 
-    return x, y
+    return outer_dim, inner_dim
