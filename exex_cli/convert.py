@@ -22,6 +22,11 @@ def to_strings(values):
 
 
 def to_csv(values, delimiter=",", line_separator="\n"):
+    if not values:
+        return ""
+    elif not isinstance(values, list):
+        return to_strings(values)
+
     outer_dim, inner_dim = array_dimensions(values)
 
     if outer_dim == 0 and inner_dim == 0:
