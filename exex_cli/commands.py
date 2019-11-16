@@ -1,7 +1,10 @@
+import json
+
 import cleo
 from exex import parse
-from exex_cli import formats
 from openpyxl import load_workbook
+
+from exex_cli import formats
 
 
 class ExtractCommand(cleo.Command):
@@ -13,6 +16,7 @@ class ExtractCommand(cleo.Command):
         {--s|sheet=0 : Name of sheet}
         {--r|range=all : Range}
         {--f|format=text : text, table, json, csv}
+        {--d|delimiter=, : Delimiter in output}
     """
 
     def handle(self):
@@ -41,15 +45,22 @@ class ExtractCommand(cleo.Command):
         # format
         arg_format = self.option("format")
 
-        if arg_format == formats.TEXT:
-            self.info('you want it as text')
-        elif arg_format == formats.CSV:
-            self.info('you want it as csv')
-        elif arg_format == formats.JSON:
-            self.info('you want it as json')
-        elif arg_format == formats.JSONL:
-            self.info('you want it as json lines')
-
-        print(values_parsed)
+        self.info("\n")
+        self.__render(values_parsed, arg_format)
+        self.info("\n")
 
         return
+
+    def __render(self, values, format_=formats.TEXT):
+        if format_ == formats.TEXT:
+            self.info(values)
+        elif format_ == formats.CSV:
+            delimiter = self.option("delimiter")
+            values_as_csv = "\n".join([delimiter.join(r) for r in values])
+            self.info(values_as_csv)
+        elif format_ == formats.TABLE:
+            self.render_table(headers=values[0], rows=values[1:])
+        elif format_ == formats.JSON:
+            self.info(json.dumps(values, indent=2))
+        else:
+            self.info(values)
