@@ -6,24 +6,19 @@ class ExtractCommand(cleo.Command):
     Extract data from Excel document.
 
     extract
-        {file : Source file path}
-        {range? : Range}
-        {format? : Format (json, jsonl, xml)}
-        {skip_rows? : Number of rows to skip}
-        {skip_cols? : Number of cols to skip}
+        {filename : Source file path}
+        {sheet? : Name or index of sheet}
+        {selection? : Selection}
+        {format? : text, json, xml, csv}
     """
 
     def handle(self):
-        excel_file_path = self.argument("file")
+        filename = self.argument("filename")
 
-        if not excel_file_path:
+        if not filename:
             self.info("FAIL")
             return
 
-        if self.argument("format"):
-            pass
+        self.info(filename)
 
-        ext = extract.Extractor(excel_file_path)
-        values = ext.all()
-
-        print(values)
+        return
