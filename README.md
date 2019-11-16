@@ -17,7 +17,7 @@ Parameter | Type | Default | Description
 `FILENAME` | (required) string | | Path to .xlsx file. 
 `[SHEET]` | (optional) string or int | `0` (first sheet) | Name or index of sheet
 `[RANGE]` | (optional) range | `all` (all values) | Range to get values from
-`[FORMAT]` | (optional) string | `text` | `text`, `table`, `json`, `csv`
+`[FORMAT]` | (optional) string | `text` | `table`, `json`, `csv`
 
 **Type of ranges**
 

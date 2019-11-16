@@ -1,5 +1,4 @@
 CSV = "csv"
 JSON = "json"
-JSONL = "jsonl"
 TABLE = "table"
 TEXT = "text"
