@@ -12,7 +12,7 @@ class ExtractCommand(cleo.Command):
         {filename : Source file path}
         {--s|sheet=0 : Name of sheet}
         {--r|range=all : Range}
-        {--f|format=text : text, json, xml, csv}
+        {--f|format=text : text, table, json, csv}
     """
 
     def handle(self):
@@ -41,13 +41,13 @@ class ExtractCommand(cleo.Command):
         # format
         arg_format = self.option("format")
 
-        if arg_format == formats.FORMAT_TEXT:
+        if arg_format == formats.TEXT:
             self.info('you want it as text')
-        elif arg_format == formats.FORMAT_CSV:
+        elif arg_format == formats.CSV:
             self.info('you want it as csv')
-        elif arg_format == formats.FORMAT_JSON:
+        elif arg_format == formats.JSON:
             self.info('you want it as json')
-        elif arg_format == formats.FORMAT_JSONL:
+        elif arg_format == formats.JSONL:
             self.info('you want it as json lines')
 
         print(values_parsed)
