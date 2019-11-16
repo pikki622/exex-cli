@@ -9,17 +9,17 @@ pip install exex-cli
 ## Usage
 ### Synopsis
 ```bash
-exex FILENAME [SHEET] [SELECTION] [--format json|xml|csv] 
+exex FILENAME --sheet SHEET --range RANGE --format FORMAT 
 ```
 
 Parameter | Type | Default | Description
 --- | --- | --- | ---
-`FILENAME` | string | | Path to .xlsx file. 
-`[SHEET]` | string or int | `0` (first sheet) | Name or index of sheet
-`[SELECTION]` | selection | `all` (all values) | Selection
-`[format]` | string | `text` | `text`, `json`, `xml`, `csv`
+`FILENAME` | (required) string | | Path to .xlsx file. 
+`[SHEET]` | (optional) string or int | `0` (first sheet) | Name or index of sheet
+`[RANGE]` | (optional) range | `all` (all values) | Range to get values from
+`[FORMAT]` | (optional) string | `text` | `text`, `json`, `csv`
 
-**Types of selections**
+**Type of ranges**
 
 Type | Syntax | Example
 --- | --- | ---
