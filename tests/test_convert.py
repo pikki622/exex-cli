@@ -34,5 +34,6 @@ def test_to_csv():
     assert convert.to_csv([]) == "\n"
     assert convert.to_csv(["a"]) == "a\n"
     assert convert.to_csv(["a", "b", 3]) == "a,b,3\n"
+    assert convert.to_csv([["a", "b", 3]]) == "a,b,3\n"
     assert convert.to_csv([1]) == "1\n"
     assert convert.to_csv([["a", 1], ["b", 2]]) == "a,1\nb,2\n"
