@@ -36,12 +36,12 @@ Row range | `[FROM]:[TO]` | `1:3`
 
 **Get all values**
 ```bash
-exex sample.xlsx 
+python -m exex_cli.main sample.xlsx 
 ```
 
 **Get all values as JSON**
 ```bash
-exex sample.xlsx --format json 
+python -m exex_cli.main sample.xlsx --format json 
 ```
 
 ## Development
