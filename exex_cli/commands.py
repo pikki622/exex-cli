@@ -20,19 +20,26 @@ class ExtractCommand(cleo.Command):
     """
 
     def handle(self):
-        # file
-        arg_filename = self.argument("filename")
-        book = load_workbook(arg_filename)
+        book = self.__get_book()
+        sheet = self.__get_sheet(book)
 
-        # sheet
+        values_parsed = self.__parse_values_from_sheet(sheet)
+        values_formatted = self.__format_values(values_parsed)
+        self.__render_values(values_formatted)
+
+    def __get_book(self):
+        arg_filename = self.argument("filename")
+        return load_workbook(arg_filename)
+
+    def __get_sheet(self, book):
         arg_sheet = self.option("sheet")
 
         if arg_sheet == "0":
             arg_sheet = book.sheetnames[0]
 
-        sheet = book[arg_sheet]
+        return book[arg_sheet]
 
-        # values
+    def __parse_values_from_sheet(self, sheet):
         arg_range = self.option("range")
 
         if arg_range == "all":
@@ -40,33 +47,30 @@ class ExtractCommand(cleo.Command):
         else:
             values_raw = sheet[arg_range]
 
-        values_parsed = parse.values(values_raw)
+        return parse.values(values_raw)
 
-        # format
+    def __format_values(self, values):
         arg_format = self.option("format")
-        values_formatted = self.__format(values_parsed, arg_format)
 
-        # render
-        self.info("\n")
-        self.__render(values_formatted, arg_format)
-        self.info("\n")
-
-        return
-
-    def __format(self, values, format_):
-        if format_ == formats.TEXT:
+        if arg_format == formats.TEXT:
             return values
-        elif format_ == formats.CSV:
+        elif arg_format == formats.CSV:
             return convert.to_csv(values, delimiter=self.option("delimiter"))
-        elif format_ == formats.TABLE:
+        elif arg_format == formats.TABLE:
             return convert.to_strings(values)
-        elif format_ == formats.JSON:
+        elif arg_format == formats.JSON:
             return convert.to_json(values)
         else:
             return values
 
-    def __render(self, values_formatted, format_):
-        if format_ == formats.TABLE:
+    def __render_values(self, values_formatted):
+        arg_format = self.option("format")
+
+        self.info("\n")
+
+        if arg_format == formats.TABLE:
             self.render_table(headers=values_formatted[0], rows=values_formatted[1:])
         else:
             self.info(values_formatted)
+
+        self.info("\n")
