@@ -37,3 +37,20 @@ def test_to_csv():
     assert convert.to_csv([["a", "b", 3]]) == "a,b,3\n"
     assert convert.to_csv([1]) == "1\n"
     assert convert.to_csv([["a", 1], ["b", 2]]) == "a,1\nb,2\n"
+
+
+def test_to_json():
+    def strip_whitespace(val):
+        import re
+
+        pattern = re.compile(r"\s+")
+        return re.sub(pattern, "", val)
+
+    def json_no_whitespace(val):
+        return strip_whitespace(convert.to_json(val))
+
+    assert json_no_whitespace(["a"]) == '["a"]'
+    assert json_no_whitespace(["a", "b", 3]) == '["a","b",3]'
+    assert json_no_whitespace([["a", "b", 3]]) == '[["a","b",3]]'
+    assert json_no_whitespace([1]) == "[1]"
+    assert json_no_whitespace([["a", 1], ["b", 2]]) == '[["a",1],["b",2]]'
