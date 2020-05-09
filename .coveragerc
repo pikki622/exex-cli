@@ -1,0 +1,5 @@
+[run]
+source = domainprops
+omit =
+    .venv/*
+    tests/*
