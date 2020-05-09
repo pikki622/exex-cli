@@ -1,5 +1,5 @@
 [run]
-source = domainprops
+source = exex_cli
 omit =
     .venv/*
     tests/*
