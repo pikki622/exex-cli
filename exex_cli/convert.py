@@ -6,7 +6,9 @@ from exex_cli.util import array_dimensions
 
 
 def to_string(value):
-    if value:
+    if isinstance(value, int):
+        return str(value)
+    elif value:
         return str(value)
     else:
         return ""
@@ -26,7 +28,7 @@ def to_strings(values):
 def to_csv(values, delimiter=","):
     newline = "\n"
 
-    if not values:
+    if values is None or (isinstance(values, list) and not values):
         return newline
 
     outer_dim, inner_dim = array_dimensions(values)
