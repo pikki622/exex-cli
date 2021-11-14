@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>exex</h1>
+    <h1>exex-cli</h1>
     <p>
         <b>CLI for extracting data from Excel documents</b>
     </p>
