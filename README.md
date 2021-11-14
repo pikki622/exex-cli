@@ -20,7 +20,7 @@ pip install exex-cli
 ## Usage
 ### Synopsis
 ```bash
-python -m exex_cli FILENAME --sheet SHEET --range RANGE --format FORMAT 
+python -m exex_cli extract FILENAME --sheet SHEET --range RANGE --format FORMAT 
 ```
 
 Parameter | Type | Default | Description
@@ -47,12 +47,12 @@ Row range | `[FROM]:[TO]` | `1:3`
 
 **Get all values as JSON**
 ```bash
-python -m exex_cli sample.xlsx --format json
+python -m exex_cli extract sample.xlsx --format json
 ```
 
 **Get cell range as CSV**
 ```bash
-python -m exex_cli sample.xlsx --range A1:A3 --format csv
+python -m exex_cli extract sample.xlsx --range A1:A3 --format csv
 ```
 
 ## Development
