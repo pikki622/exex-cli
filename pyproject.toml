@@ -18,12 +18,13 @@ classifiers = [
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-cleo = "=0.6.8"
-exex = "^0.1.7"
+python = "^3.6.2"
+cleo = "^0.8.1"
+exex = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^19.10b0", allow-prereleases = true}
