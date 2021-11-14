@@ -57,14 +57,14 @@ python -m exex_cli sample.xlsx --range A1:A3 --format csv
 
 ## Development
 
+**Setup**
+```sh
+poetry install
+```
+
 **Tests** (local Python version)
 ```sh
 poetry run pytest
-```
-
-**Tests** (all Python versions defined in `tox.ini`)
-```sh
-poetry run tox
 ```
 
 **Code formatting** (black)
