@@ -52,9 +52,7 @@ class ExtractCommand(cleo.Command):
     def __format_values(self, values):
         arg_format = self.option("format")
 
-        if arg_format == formats.TEXT:
-            return values
-        elif arg_format == formats.CSV:
+        if arg_format == formats.CSV:
             return convert.to_csv(values, delimiter=self.option("delimiter"))
         elif arg_format == formats.TABLE:
             return convert.to_strings(values)
@@ -65,12 +63,15 @@ class ExtractCommand(cleo.Command):
 
     def __render_values(self, values_formatted):
         arg_format = self.option("format")
+        is_print_format = arg_format in [formats.TEXT, formats.TABLE]
 
-        self.info("\n")
+        if is_print_format:
+            self.info("\n")
 
         if arg_format == formats.TABLE:
             self.render_table(headers=values_formatted[0], rows=values_formatted[1:])
         else:
             self.info(values_formatted)
 
-        self.info("\n")
+        if is_print_format:
+            self.info("\n")
