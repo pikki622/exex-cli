@@ -1,5 +1,16 @@
-# exex-cli ![test](https://github.com/vikpe/exex-cli/workflows/test/badge.svg?branch=master) [![codecov](https://codecov.io/gh/vikpe/exex-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/vikpe/exex-cli) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-> Command-line interface for extracting data from Excel documents.
+<div align="center">
+    <h1>exex</h1>
+    <p>
+        <b>CLI for extracting data from Excel documents</b>
+    </p>
+
+[![PyPI version](https://badge.fury.io/py/exex-cli.svg)](https://pypi.org/project/exex-cli/)
+![test](https://github.com/vikpe/exex-cli/workflows/test/badge.svg?branch=master) [![codecov](https://codecov.io/gh/vikpe/exex-cli/branch/master/graph/badge.svg)](https://codecov.io/gh/vikpe/exex-cli)
+
+<br>
+
+</div>
+
 
 ## Installation
 ```sh
@@ -34,14 +45,14 @@ Row range | `[FROM]:[TO]` | `1:3`
 
 ### Examples
 
-**Get all values**
-```bash
-python -m exex_cli sample.xlsx 
-```
-
 **Get all values as JSON**
 ```bash
-python -m exex_cli sample.xlsx --format json 
+python -m exex_cli sample.xlsx --format json
+```
+
+**Get cell range as CSV**
+```bash
+python -m exex_cli sample.xlsx --range A1:A3 --format csv
 ```
 
 ## Development
