@@ -20,7 +20,7 @@ pip install exex-cli
 ## Usage
 ### Synopsis
 ```bash
-exex FILENAME --sheet SHEET --range RANGE --format FORMAT 
+python -m exex_cli FILENAME --sheet SHEET --range RANGE --format FORMAT 
 ```
 
 Parameter | Type | Default | Description
