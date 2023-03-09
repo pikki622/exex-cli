@@ -42,11 +42,7 @@ class ExtractCommand(cleo.Command):
     def __parse_values_from_sheet(self, sheet):
         arg_range = self.option("range")
 
-        if arg_range == "all":
-            values_raw = sheet.values
-        else:
-            values_raw = sheet[arg_range]
-
+        values_raw = sheet.values if arg_range == "all" else sheet[arg_range]
         return parse.values(values_raw)
 
     def __format_values(self, values):
