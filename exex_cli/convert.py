@@ -6,12 +6,7 @@ from exex_cli.util import array_dimensions
 
 
 def to_string(value):
-    if isinstance(value, int):
-        return str(value)
-    elif value:
-        return str(value)
-    else:
-        return ""
+    return str(value) if isinstance(value, int) or value else ""
 
 
 def to_strings(values):
